@@ -71,11 +71,15 @@ public:
 	//				If IMU_MODE_SPI, this is the cs pin of the magnetometer (CS_M)
 	LSM9DS1(interface_mode interface, uint8_t xgAddr, uint8_t mAddr);
 	LSM9DS1();
-		
+
+	bool find();
+
 	// begin() -- Initialize the gyro, accelerometer, and magnetometer.
 	// This will set up the scale and output rate of each sensor. The values set
 	// in the IMUSettings struct will take effect after calling this function.
-	uint16_t begin();
+	bool begin();
+
+	bool reset();
 	
 	void calibrate(bool autoCalc = true);
 	void calibrateMag(bool loadIn = true);
